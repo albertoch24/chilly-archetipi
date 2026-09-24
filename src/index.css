@@ -1,0 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Jost:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/*
+ * Look & feel Chilly (media brief 2027 + chilly-intimate.com): gradienti pervinca e viola,
+ * card menta e rosa, bagni a piastrelle pastello, wordmark bianco arrotondato (Baloo),
+ * testo geometrico (ITC Avant Garde sul sito → Jost).
+ */
+@layer base {
+  :root {
+    --brand-green: 157 91% 35%;          /* #08AD6D, il verde del flacone gel */
+
+    /* Viola "inchiostro" delle pillole di evidenza del brief: testi, icone, azioni secondarie */
+    --primary: 281 54% 36%;              /* #6D2A8C */
+    --primary-foreground: 0 0% 100%;
+
+    --background: 260 60% 99%;
+    --foreground: 262 33% 14%;           /* #1F1830 */
+
+    --card: 0 0% 100%;
+    --card-foreground: 262 33% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 262 33% 14%;
+
+    /* Lilla chiaro */
+    --secondary: 262 70% 95%;
+    --secondary-foreground: 281 54% 30%;
+
+    --muted: 262 30% 94%;
+    --muted-foreground: 262 10% 38%;
+
+    /* Menta della card "Freshness": selezioni e bottoni principali, sempre con testo scuro */
+    --accent: 159 55% 64%;               /* #6FD5B1 */
+    --accent-foreground: 262 33% 14%;
+    --accent-soft: 159 55% 92%;
+    --accent-glow: 196 100% 47%;         /* #00AEEF */
+
+    /* Rosso della variante Ciclo */
+    --destructive: 348 69% 51%;          /* #D82C4E */
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 36 92% 50%;
+    --warning-foreground: 262 33% 14%;
+
+    --border: 262 30% 88%;
+    --input: 262 25% 82%;
+    --ring: 281 54% 36%;
+
+    --radius: 1rem;
+
+    /* Conferme del facilitatore: verde Chilly scuro, contrasto AA con il bianco */
+    --success: 157 91% 26%;              /* #067F50 */
+    --success-foreground: 0 0% 100%;
+
+    /* Colori pop del brief */
+    --pop-mint: 159 55% 64%;             /* #6FD5B1 Freshness */
+    --pop-pink: 327 77% 78%;             /* #F29ACB Specificity */
+    --pop-cyan: 196 100% 47%;            /* #00AEEF */
+    --pop-coral: 352 67% 63%;            /* #E06070 */
+    --pop-violet: 291 41% 53%;           /* #A954B8 */
+
+    --gradient-hero: linear-gradient(120deg, hsl(238 49% 57%) 0%, hsl(258 48% 56%) 50%, hsl(269 47% 55%) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(159 55% 58%) 0%, hsl(172 60% 55%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(262 60% 98%) 100%);
+
+    --shadow-soft: 0 4px 20px -4px hsl(262 50% 30% / 0.10);
+    --shadow-medium: 0 8px 30px -8px hsl(262 50% 30% / 0.18);
+    --shadow-accent: 0 8px 30px -8px hsl(159 55% 40% / 0.40);
+    --shadow-elevated: 0 20px 50px -12px hsl(262 50% 30% / 0.24);
+
+    --sidebar-background: 281 54% 36%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 281 54% 36%;
+    --sidebar-accent: 281 45% 42%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 281 45% 42%;
+    --sidebar-ring: 0 0% 100%;
+  }
+
+  .dark {
+    --brand-green: 157 80% 45%;
+    --primary: 281 60% 72%;
+    --primary-foreground: 262 33% 10%;
+
+    --background: 262 25% 8%;
+    --foreground: 262 20% 94%;
+
+    --card: 262 22% 12%;
+    --card-foreground: 262 20% 94%;
+
+    --popover: 262 22% 12%;
+    --popover-foreground: 262 20% 94%;
+
+    --secondary: 262 20% 18%;
+    --secondary-foreground: 262 20% 94%;
+
+    --muted: 262 15% 19%;
+    --muted-foreground: 262 10% 66%;
+
+    --accent: 159 55% 60%;
+    --accent-foreground: 262 33% 10%;
+    --accent-soft: 159 30% 18%;
+    --accent-glow: 196 90% 55%;
+
+    --destructive: 348 70% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --warning: 36 92% 55%;
+    --warning-foreground: 262 33% 10%;
+
+    --border: 262 15% 22%;
+    --input: 262 15% 25%;
+    --ring: 281 60% 72%;
+
+    --success: 157 70% 45%;
+    --success-foreground: 262 33% 10%;
+
+    --pop-mint: 159 55% 60%;
+    --pop-pink: 327 70% 75%;
+    --pop-cyan: 196 90% 55%;
+    --pop-coral: 352 67% 66%;
+    --pop-violet: 291 45% 62%;
+
+    --gradient-hero: linear-gradient(120deg, hsl(238 40% 30%) 0%, hsl(269 40% 28%) 100%);
+    --gradient-accent: linear-gradient(90deg, hsl(159 55% 55%) 0%, hsl(172 60% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(262 22% 12%) 0%, hsl(262 22% 10%) 100%);
+
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --shadow-medium: 0 8px 30px -8px hsl(0 0% 0% / 0.4);
+    --shadow-accent: 0 8px 30px -8px hsl(159 55% 50% / 0.25);
+    --shadow-elevated: 0 20px 50px -12px hsl(0 0% 0% / 0.5);
+
+    --sidebar-background: 262 25% 6%;
+    --sidebar-foreground: 262 20% 94%;
+    --sidebar-primary: 281 60% 72%;
+    --sidebar-primary-foreground: 262 33% 10%;
+    --sidebar-accent: 262 22% 14%;
+    --sidebar-accent-foreground: 262 20% 94%;
+    --sidebar-border: 262 22% 14%;
+    --sidebar-ring: 281 60% 72%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-accent);
+  }
+
+  .bg-hero {
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.07) 1px, transparent 1px),
+      var(--gradient-hero);
+    background-size: 56px 56px, 56px 56px, auto;
+  }
+
+  /* Bolle nei colori pop del brief e wordmark gigante in filigrana, come nelle slide Chilly */
+  .brand-bubbles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background:
+      radial-gradient(circle 46px at 9% 24%, hsl(var(--pop-pink) / 0.9) 97%, transparent 100%),
+      radial-gradient(circle 78px at 91% 16%, hsl(var(--pop-mint) / 0.75) 97%, transparent 100%),
+      radial-gradient(circle 26px at 82% 70%, hsl(var(--pop-cyan) / 0.9) 97%, transparent 100%),
+      radial-gradient(circle 14px at 22% 78%, hsl(var(--pop-coral) / 0.9) 97%, transparent 100%);
+  }
+
+  /* Su telefono restano due bolle agli angoli, lontane dal testo */
+  @media (max-width: 640px) {
+    .brand-bubbles {
+      background:
+        radial-gradient(circle 34px at 4% 12%, hsl(var(--pop-pink) / 0.9) 97%, transparent 100%),
+        radial-gradient(circle 46px at 98% 8%, hsl(var(--pop-mint) / 0.75) 97%, transparent 100%);
+    }
+  }
+
+  .brand-bubbles::after {
+    content: 'Chilly';
+    position: absolute;
+    right: -1%;
+    bottom: -0.3em;
+    font-family: 'Baloo 2', 'Jost', system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(7rem, 22vw, 19rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: hsl(0 0% 100% / 0.08);
+  }
+
+  /* La "pillola" che nelle slide evidenzia una parola chiave */
+  .hl-pill {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border-radius: 9999px;
+    padding: 0 0.3em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .brand-wordmark {
+    font-family: 'Baloo 2', 'Jost', system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    display: inline-block;
+  }
+
+  /* Diagramma di Venn della mappa dei valori */
+  .venn-circle {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    border-radius: 9999px;
+  }
+
+  .venn-today {
+    left: 8%;
+    background: hsl(var(--pop-mint) / 0.28);
+    border: 2px solid hsl(var(--pop-mint));
+  }
+
+  .venn-tomorrow {
+    right: 8%;
+    background: hsl(var(--pop-pink) / 0.28);
+    border: 2px solid hsl(var(--pop-pink));
+  }
+
+  .bg-accent-gradient {
+    background: var(--gradient-accent);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-medium {
+    box-shadow: var(--shadow-medium);
+  }
+
+  .shadow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px hsl(var(--accent) / 0.5);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
