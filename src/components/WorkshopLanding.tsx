@@ -87,7 +87,7 @@ export function WorkshopLanding() {
               {WORKSHOP.title}
             </div>
 
-            <h1 className="font-heading text-3xl md:text-5xl font-bold text-primary-foreground mt-6 mb-5 text-balance animate-slide-up">
+            <h1 className="font-heading text-3xl md:text-5xl font-bold text-primary-foreground mt-6 mb-5 text-balance animate-slide-up !leading-[1.4]">
               Chi è {BRAND_NAME}, prima di scegliere <span className="hl-pill">chi la rappresenta</span>
             </h1>
 

@@ -212,12 +212,10 @@
       radial-gradient(circle 14px at 22% 78%, hsl(var(--pop-coral) / 0.9) 97%, transparent 100%);
   }
 
-  /* Su telefono restano due bolle agli angoli, lontane dal testo */
+  /* Su telefono niente bolle: finirebbero dietro wordmark e nome del partecipante. Restano griglia e filigrana */
   @media (max-width: 640px) {
     .brand-bubbles {
-      background:
-        radial-gradient(circle 34px at 4% 12%, hsl(var(--pop-pink) / 0.9) 97%, transparent 100%),
-        radial-gradient(circle 46px at 98% 8%, hsl(var(--pop-mint) / 0.75) 97%, transparent 100%);
+      background: none;
     }
   }
 
